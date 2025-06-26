@@ -1,0 +1,24 @@
+{"time":"2025-06-26T00:29:39.174483+01:00","level":"INFO","msg":"stream: starting","core version":"0.19.10","symlink path":"/Users/liuyihao/Desktop/yl2063/src/wandb/run-20250626_002937-c9t17d2o/logs/debug-core.log"}
+{"time":"2025-06-26T00:29:39.412961+01:00","level":"INFO","msg":"created new stream","id":"c9t17d2o"}
+{"time":"2025-06-26T00:29:39.412991+01:00","level":"INFO","msg":"stream: started","id":"c9t17d2o"}
+{"time":"2025-06-26T00:29:39.412996+01:00","level":"INFO","msg":"handler: started","stream_id":"c9t17d2o"}
+{"time":"2025-06-26T00:29:39.413007+01:00","level":"INFO","msg":"sender: started","stream_id":"c9t17d2o"}
+{"time":"2025-06-26T00:29:39.413022+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"c9t17d2o"}
+{"time":"2025-06-26T00:29:39.625254+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-06-26T00:49:40.210885+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/liuyihao649-university-of-cambridge/DIS-final-pro/c9t17d2o/file_stream\": read tcp 10.252.111.126:61056->35.186.228.49:443: read: connection reset by peer"}
+{"time":"2025-06-26T01:15:01.861115+01:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-06-26T01:15:01.88176+01:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-06-26T01:15:16.113488+01:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-06-26T01:15:16.513795+01:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-06-26T01:15:38.088963+01:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-06-26T01:15:38.172446+01:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-06-26T01:15:40.985506+01:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-06-26T01:15:41.117122+01:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-06-26T01:16:21.742577+01:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-06-26T01:16:21.745852+01:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-06-26T01:16:31.567012+01:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-06-26T01:16:31.569714+01:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-06-26T01:16:41.264583+01:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-06-26T01:16:41.426767+01:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-06-26T01:16:57.051433+01:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-06-26T01:16:57.197601+01:00","level":"INFO","msg":"Resuming system monitor"}

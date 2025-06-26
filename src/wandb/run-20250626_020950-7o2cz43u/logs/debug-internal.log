@@ -1,0 +1,16 @@
+{"time":"2025-06-26T02:09:50.405956+01:00","level":"INFO","msg":"stream: starting","core version":"0.19.10","symlink path":"/Users/liuyihao/Desktop/yl2063/src/wandb/run-20250626_020950-7o2cz43u/logs/debug-core.log"}
+{"time":"2025-06-26T02:09:50.649444+01:00","level":"INFO","msg":"created new stream","id":"7o2cz43u"}
+{"time":"2025-06-26T02:09:50.649469+01:00","level":"INFO","msg":"stream: started","id":"7o2cz43u"}
+{"time":"2025-06-26T02:09:50.649474+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"7o2cz43u"}
+{"time":"2025-06-26T02:09:50.649489+01:00","level":"INFO","msg":"handler: started","stream_id":"7o2cz43u"}
+{"time":"2025-06-26T02:09:50.649498+01:00","level":"INFO","msg":"sender: started","stream_id":"7o2cz43u"}
+{"time":"2025-06-26T02:09:50.951504+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-06-26T02:21:21.525439+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/liuyihao649-university-of-cambridge/DIS-final-pro/7o2cz43u/file_stream\": read tcp 10.252.111.126:55339->35.186.228.49:443: read: connection reset by peer"}
+{"time":"2025-06-26T02:46:19.788656+01:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-06-26T02:46:19.814486+01:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-06-26T02:46:24.433836+01:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-06-26T02:46:24.6686+01:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-06-26T02:46:31.001079+01:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-06-26T02:46:31.279025+01:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-06-26T02:46:42.796774+01:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-06-26T02:47:00.044439+01:00","level":"INFO","msg":"Resuming system monitor"}

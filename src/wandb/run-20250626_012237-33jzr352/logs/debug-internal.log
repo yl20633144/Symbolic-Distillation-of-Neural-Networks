@@ -1,0 +1,13 @@
+{"time":"2025-06-26T01:22:37.79171+01:00","level":"INFO","msg":"stream: starting","core version":"0.19.10","symlink path":"/Users/liuyihao/Desktop/yl2063/src/wandb/run-20250626_012237-33jzr352/logs/debug-core.log"}
+{"time":"2025-06-26T01:22:38.035009+01:00","level":"INFO","msg":"created new stream","id":"33jzr352"}
+{"time":"2025-06-26T01:22:38.035037+01:00","level":"INFO","msg":"stream: started","id":"33jzr352"}
+{"time":"2025-06-26T01:22:38.035053+01:00","level":"INFO","msg":"sender: started","stream_id":"33jzr352"}
+{"time":"2025-06-26T01:22:38.035054+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"33jzr352"}
+{"time":"2025-06-26T01:22:38.035072+01:00","level":"INFO","msg":"handler: started","stream_id":"33jzr352"}
+{"time":"2025-06-26T01:22:38.339232+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-06-26T02:05:57.050322+01:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-06-26T02:05:57.069585+01:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-06-26T02:05:59.537052+01:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-06-26T02:05:59.818238+01:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-06-26T02:06:04.472917+01:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-06-26T02:06:04.840454+01:00","level":"INFO","msg":"Resuming system monitor"}
