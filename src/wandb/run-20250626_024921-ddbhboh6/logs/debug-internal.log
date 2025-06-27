@@ -1,0 +1,53 @@
+{"time":"2025-06-26T02:49:23.086895+01:00","level":"INFO","msg":"stream: starting","core version":"0.19.10","symlink path":"/Users/liuyihao/Desktop/yl2063/src/wandb/run-20250626_024921-ddbhboh6/logs/debug-core.log"}
+{"time":"2025-06-26T02:49:23.336689+01:00","level":"INFO","msg":"created new stream","id":"ddbhboh6"}
+{"time":"2025-06-26T02:49:23.336725+01:00","level":"INFO","msg":"stream: started","id":"ddbhboh6"}
+{"time":"2025-06-26T02:49:23.336719+01:00","level":"INFO","msg":"handler: started","stream_id":"ddbhboh6"}
+{"time":"2025-06-26T02:49:23.336729+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"ddbhboh6"}
+{"time":"2025-06-26T02:49:23.336741+01:00","level":"INFO","msg":"sender: started","stream_id":"ddbhboh6"}
+{"time":"2025-06-26T02:49:23.520509+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-06-26T03:29:41.308908+01:00","level":"INFO","msg":"api: retrying HTTP error","status":429,"url":"https://api.wandb.ai/files/liuyihao649-university-of-cambridge/DIS-final-pro/ddbhboh6/file_stream","body":"{\"error\":\"rate limit exceeded\"}"}
+{"time":"2025-06-26T03:29:45.551586+01:00","level":"INFO","msg":"api: retrying HTTP error","status":429,"url":"https://api.wandb.ai/files/liuyihao649-university-of-cambridge/DIS-final-pro/ddbhboh6/file_stream","body":"{\"error\":\"rate limit exceeded\"}"}
+{"time":"2025-06-26T03:29:50.097516+01:00","level":"INFO","msg":"api: retrying HTTP error","status":429,"url":"https://api.wandb.ai/files/liuyihao649-university-of-cambridge/DIS-final-pro/ddbhboh6/file_stream","body":"{\"error\":\"rate limit exceeded\"}"}
+{"time":"2025-06-26T03:29:59.048251+01:00","level":"INFO","msg":"api: retrying HTTP error","status":429,"url":"https://api.wandb.ai/files/liuyihao649-university-of-cambridge/DIS-final-pro/ddbhboh6/file_stream","body":"{\"error\":\"rate limit exceeded\"}"}
+{"time":"2025-06-26T03:48:27.890335+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": read tcp 10.252.111.126:64048->35.186.228.49:443: read: connection reset by peer"}
+{"time":"2025-06-26T04:02:26.153684+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": read tcp 10.252.111.126:64659->35.186.228.49:443: read: connection reset by peer"}
+{"time":"2025-06-26T04:15:59.957705+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": read tcp 10.252.111.126:64840->35.186.228.49:443: read: connection reset by peer"}
+{"time":"2025-06-26T04:29:33.751323+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": read tcp 10.252.111.126:52247->35.186.228.49:443: read: connection reset by peer"}
+{"time":"2025-06-26T04:43:07.916969+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": read tcp 10.252.111.126:52349->35.186.228.49:443: read: connection reset by peer"}
+{"time":"2025-06-26T05:11:05.665169+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": read tcp 10.252.111.126:56159->35.186.228.49:443: read: connection reset by peer"}
+{"time":"2025-06-26T05:24:39.468698+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": read tcp 10.252.111.126:59692->35.186.228.49:443: read: connection reset by peer"}
+{"time":"2025-06-26T05:43:02.207173+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": read tcp 10.252.111.126:63420->35.186.228.49:443: read: connection reset by peer"}
+{"time":"2025-06-26T05:56:35.888439+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": read tcp 10.252.111.126:50960->35.186.228.49:443: read: connection reset by peer"}
+{"time":"2025-06-26T06:10:24.861836+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": read tcp 10.252.111.126:51080->35.186.228.49:443: read: connection reset by peer"}
+{"time":"2025-06-26T06:24:01.610777+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": read tcp 10.252.111.126:54886->35.186.228.49:443: read: connection reset by peer"}
+{"time":"2025-06-26T06:51:44.908487+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": read tcp 10.252.111.126:55058->35.186.228.49:443: read: connection reset by peer"}
+{"time":"2025-06-26T07:31:36.552041+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": read tcp 10.252.111.126:50427->35.186.228.49:443: read: connection reset by peer"}
+{"time":"2025-06-26T07:52:24.102357+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": read tcp 10.252.111.126:54324->35.186.228.49:443: read: connection reset by peer"}
+{"time":"2025-06-26T08:05:57.858985+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": read tcp 10.252.111.126:58198->35.186.228.49:443: read: connection reset by peer"}
+{"time":"2025-06-26T08:06:05.854637+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/liuyihao649-university-of-cambridge/DIS-final-pro/ddbhboh6/file_stream\": read tcp 10.252.111.126:58249->35.186.228.49:443: read: connection reset by peer"}
+{"time":"2025-06-26T08:19:31.591942+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": read tcp 10.252.111.126:58312->35.186.228.49:443: read: connection reset by peer"}
+{"time":"2025-06-26T08:20:03.883383+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-06-26T08:46:08.919474+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": read tcp 10.252.111.126:62275->35.186.228.49:443: read: connection reset by peer"}
+{"time":"2025-06-26T08:59:42.229367+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": read tcp 10.252.111.126:49772->35.186.228.49:443: read: connection reset by peer"}
+{"time":"2025-06-26T09:13:16.474579+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": read tcp 10.252.111.126:49879->35.186.228.49:443: read: connection reset by peer"}
+{"time":"2025-06-26T09:26:49.895139+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": read tcp 10.252.111.126:53717->35.186.228.49:443: read: connection reset by peer"}
+{"time":"2025-06-26T09:47:46.177983+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": read tcp 10.252.111.126:53854->35.186.228.49:443: read: connection reset by peer"}
+{"time":"2025-06-26T10:01:23.312901+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": read tcp 10.252.111.126:57833->35.186.228.49:443: read: connection reset by peer"}
+{"time":"2025-06-26T10:14:56.047228+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": read tcp 10.252.111.126:61706->35.186.228.49:443: read: connection reset by peer"}
+{"time":"2025-06-26T10:28:29.861059+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": read tcp 10.252.111.126:65524->35.186.228.49:443: read: connection reset by peer"}
+{"time":"2025-06-26T10:34:48.405784+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/liuyihao649-university-of-cambridge/DIS-final-pro/ddbhboh6/file_stream\": read tcp 10.252.111.126:53116->35.186.228.49:443: read: connection reset by peer"}
+{"time":"2025-06-26T10:56:38.11753+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": read tcp 10.252.111.126:49251->35.186.228.49:443: read: connection reset by peer"}
+{"time":"2025-06-26T11:10:11.863146+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": read tcp 10.252.111.126:57161->35.186.228.49:443: read: connection reset by peer"}
+{"time":"2025-06-26T11:23:46.517954+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": read tcp 10.252.111.126:57302->35.186.228.49:443: read: connection reset by peer"}
+{"time":"2025-06-26T11:35:25.837044+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": read tcp 10.252.111.126:61095->35.186.228.49:443: read: connection reset by peer"}
+{"time":"2025-06-26T11:56:45.296872+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": read tcp 10.252.111.126:61207->35.186.228.49:443: read: connection reset by peer"}
+{"time":"2025-06-26T12:10:34.056302+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": read tcp 10.252.111.126:51287->35.186.228.49:443: read: connection reset by peer"}
+{"time":"2025-06-26T12:24:13.34249+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-06-26T12:24:13.342794+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-06-26T12:24:14.353616+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"updating run config","runtime_seconds":0.848214375}],"total_operations":1}}
+{"time":"2025-06-26T12:24:16.849575+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-06-26T12:24:17.341219+01:00","level":"INFO","msg":"stream: closing","id":"ddbhboh6"}
+{"time":"2025-06-26T12:24:17.341243+01:00","level":"INFO","msg":"handler: closed","stream_id":"ddbhboh6"}
+{"time":"2025-06-26T12:24:17.341273+01:00","level":"INFO","msg":"sender: closed","stream_id":"ddbhboh6"}
+{"time":"2025-06-26T12:24:17.341504+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"ddbhboh6"}
+{"time":"2025-06-26T12:24:17.341528+01:00","level":"INFO","msg":"stream: closed","id":"ddbhboh6"}

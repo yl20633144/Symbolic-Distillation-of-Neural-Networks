@@ -1,0 +1,34 @@
+{"time":"2025-06-26T16:24:35.407258+01:00","level":"INFO","msg":"stream: starting","core version":"0.19.10","symlink path":"/Users/liuyihao/Desktop/yl2063/src/wandb/run-20250626_162434-5l6m1ht0/logs/debug-core.log"}
+{"time":"2025-06-26T16:24:35.647996+01:00","level":"INFO","msg":"created new stream","id":"5l6m1ht0"}
+{"time":"2025-06-26T16:24:35.648025+01:00","level":"INFO","msg":"stream: started","id":"5l6m1ht0"}
+{"time":"2025-06-26T16:24:35.648027+01:00","level":"INFO","msg":"handler: started","stream_id":"5l6m1ht0"}
+{"time":"2025-06-26T16:24:35.648035+01:00","level":"INFO","msg":"sender: started","stream_id":"5l6m1ht0"}
+{"time":"2025-06-26T16:24:35.648054+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"5l6m1ht0"}
+{"time":"2025-06-26T16:24:35.894661+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-06-26T16:39:06.407931+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/liuyihao649-university-of-cambridge/DIS-final-pro/5l6m1ht0/file_stream\": read tcp 10.252.111.126:50432->35.186.228.49:443: read: connection reset by peer"}
+{"time":"2025-06-26T17:05:57.05854+01:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-06-26T17:05:57.085677+01:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-06-26T17:06:01.97348+01:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-06-26T17:06:02.201435+01:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-06-26T17:06:05.391145+01:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-06-26T17:06:05.583941+01:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-06-26T17:06:49.59664+01:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-06-26T17:06:49.600012+01:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-06-26T17:06:51.44799+01:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-06-26T17:06:51.450491+01:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-06-26T17:06:54.571657+01:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-06-26T17:07:04.715425+01:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-06-26T17:07:15.633122+01:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-06-26T17:07:15.634043+01:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-06-26T17:07:36.34707+01:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-06-26T17:07:36.396871+01:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-06-26T17:07:40.375634+01:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-06-26T17:07:40.382808+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-06-26T17:07:40.382841+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-06-26T17:07:41.213962+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-06-26T17:07:41.390947+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading summary","runtime_seconds":0.176898542}],"total_operations":1}}
+{"time":"2025-06-26T17:07:41.410506+01:00","level":"INFO","msg":"stream: closing","id":"5l6m1ht0"}
+{"time":"2025-06-26T17:07:41.415391+01:00","level":"INFO","msg":"handler: closed","stream_id":"5l6m1ht0"}
+{"time":"2025-06-26T17:07:41.415426+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"5l6m1ht0"}
+{"time":"2025-06-26T17:07:41.415463+01:00","level":"INFO","msg":"sender: closed","stream_id":"5l6m1ht0"}
+{"time":"2025-06-26T17:07:41.415631+01:00","level":"INFO","msg":"stream: closed","id":"5l6m1ht0"}

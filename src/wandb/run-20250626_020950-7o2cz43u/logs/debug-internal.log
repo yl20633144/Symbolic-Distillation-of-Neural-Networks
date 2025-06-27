@@ -14,3 +14,15 @@
 {"time":"2025-06-26T02:46:31.279025+01:00","level":"INFO","msg":"Resuming system monitor"}
 {"time":"2025-06-26T02:46:42.796774+01:00","level":"INFO","msg":"Pausing system monitor"}
 {"time":"2025-06-26T02:47:00.044439+01:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-06-26T02:49:13.124078+01:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-06-26T02:49:13.141124+01:00","level":"INFO","msg":"Resuming system monitor"}
+{"time":"2025-06-26T02:49:21.850107+01:00","level":"INFO","msg":"Pausing system monitor"}
+{"time":"2025-06-26T02:49:21.925713+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-06-26T02:49:21.925753+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-06-26T02:49:22.85089+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-06-26T02:49:22.932512+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading summary","runtime_seconds":0.081512}],"total_operations":1}}
+{"time":"2025-06-26T02:49:23.085792+01:00","level":"INFO","msg":"stream: closing","id":"7o2cz43u"}
+{"time":"2025-06-26T02:49:23.08581+01:00","level":"INFO","msg":"handler: closed","stream_id":"7o2cz43u"}
+{"time":"2025-06-26T02:49:23.085818+01:00","level":"INFO","msg":"sender: closed","stream_id":"7o2cz43u"}
+{"time":"2025-06-26T02:49:23.085818+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"7o2cz43u"}
+{"time":"2025-06-26T02:49:23.085878+01:00","level":"INFO","msg":"stream: closed","id":"7o2cz43u"}

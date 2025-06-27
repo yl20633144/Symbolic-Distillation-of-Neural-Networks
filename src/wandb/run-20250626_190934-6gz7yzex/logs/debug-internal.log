@@ -1,0 +1,17 @@
+{"time":"2025-06-26T19:09:35.059238+01:00","level":"INFO","msg":"stream: starting","core version":"0.19.10","symlink path":"/Users/liuyihao/Desktop/yl2063/src/wandb/run-20250626_190934-6gz7yzex/logs/debug-core.log"}
+{"time":"2025-06-26T19:09:35.307308+01:00","level":"INFO","msg":"created new stream","id":"6gz7yzex"}
+{"time":"2025-06-26T19:09:35.307342+01:00","level":"INFO","msg":"stream: started","id":"6gz7yzex"}
+{"time":"2025-06-26T19:09:35.307349+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"6gz7yzex"}
+{"time":"2025-06-26T19:09:35.307369+01:00","level":"INFO","msg":"handler: started","stream_id":"6gz7yzex"}
+{"time":"2025-06-26T19:09:35.307361+01:00","level":"INFO","msg":"sender: started","stream_id":"6gz7yzex"}
+{"time":"2025-06-26T19:09:35.511742+01:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-06-26T19:18:36.174534+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/liuyihao649-university-of-cambridge/DIS-final-pro/6gz7yzex/file_stream\": read tcp 10.252.111.126:53039->35.186.228.49:443: read: connection reset by peer"}
+{"time":"2025-06-26T19:49:42.81596+01:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-06-26T19:49:42.816291+01:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-06-26T19:49:43.781147+01:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-06-26T19:49:43.818938+01:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading summary","runtime_seconds":0.037710416}],"total_operations":1}}
+{"time":"2025-06-26T19:49:44.079215+01:00","level":"INFO","msg":"stream: closing","id":"6gz7yzex"}
+{"time":"2025-06-26T19:49:44.079233+01:00","level":"INFO","msg":"handler: closed","stream_id":"6gz7yzex"}
+{"time":"2025-06-26T19:49:44.079245+01:00","level":"INFO","msg":"sender: closed","stream_id":"6gz7yzex"}
+{"time":"2025-06-26T19:49:44.079238+01:00","level":"INFO","msg":"writer: Close: closed","stream_id":"6gz7yzex"}
+{"time":"2025-06-26T19:49:44.079286+01:00","level":"INFO","msg":"stream: closed","id":"6gz7yzex"}

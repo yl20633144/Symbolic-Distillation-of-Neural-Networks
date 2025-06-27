@@ -35,3 +35,18 @@ config: {'_wandb': {}}
 2025-06-26 02:46:42,796 INFO    MainThread:27778 [jupyter.py:save_ipynb():401] [no run ID] not saving jupyter notebook
 2025-06-26 02:46:42,796 INFO    MainThread:27778 [wandb_init.py:_pre_run_cell_hook():602] [no run ID] pausing backend
 2025-06-26 02:47:00,043 INFO    MainThread:27778 [wandb_init.py:_post_run_cell_hook():613] [no run ID] resuming backend
+2025-06-26 02:49:13,123 INFO    MainThread:27778 [jupyter.py:save_ipynb():401] [no run ID] not saving jupyter notebook
+2025-06-26 02:49:13,123 INFO    MainThread:27778 [wandb_init.py:_pre_run_cell_hook():602] [no run ID] pausing backend
+2025-06-26 02:49:13,140 INFO    MainThread:27778 [wandb_init.py:_post_run_cell_hook():613] [no run ID] resuming backend
+2025-06-26 02:49:21,848 INFO    MainThread:27778 [jupyter.py:save_ipynb():401] [no run ID] not saving jupyter notebook
+2025-06-26 02:49:21,849 INFO    MainThread:27778 [wandb_init.py:_pre_run_cell_hook():602] [no run ID] pausing backend
+2025-06-26 02:49:21,855 INFO    MainThread:27778 [wandb_run.py:_finish():2314] finishing run liuyihao649-university-of-cambridge/DIS-final-pro/7o2cz43u
+2025-06-26 02:49:21,925 INFO    MainThread:27778 [jupyter.py:save_history():477] not saving jupyter history
+2025-06-26 02:49:21,925 INFO    MainThread:27778 [jupyter.py:save_ipynb():401] not saving jupyter notebook
+2025-06-26 02:49:21,925 INFO    MainThread:27778 [wandb_init.py:_jupyter_teardown():628] cleaning up jupyter logic
+2025-06-26 02:49:21,925 INFO    MainThread:27778 [wandb_run.py:_atexit_cleanup():2531] got exitcode: 0
+2025-06-26 02:49:21,925 INFO    MainThread:27778 [wandb_run.py:_restore():2513] restore
+2025-06-26 02:49:21,925 INFO    MainThread:27778 [wandb_run.py:_restore():2519] restore done
+2025-06-26 02:49:23,083 INFO    MainThread:27778 [wandb_run.py:_footer_history_summary_info():4160] rendering history
+2025-06-26 02:49:23,083 INFO    MainThread:27778 [wandb_run.py:_footer_history_summary_info():4192] rendering summary
+2025-06-26 02:49:23,084 INFO    MainThread:27778 [wandb_run.py:_footer_sync_info():4121] logging synced files
