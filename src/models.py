@@ -6,7 +6,7 @@ from torch.optim import Adam
 from torch_geometric.nn import MessagePassing
 from torch.nn import Sequential as Seq, Linear as Lin, ReLU
 
-from torch.autograd import Variable, grad
+
 
 
 def get_edge_index(n, sim):
