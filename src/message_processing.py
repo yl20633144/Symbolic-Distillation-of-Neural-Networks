@@ -20,7 +20,7 @@ def measure_latent(model, loader, device, dim, msg_dim):
         A pandas.DataFrame where each row corresponds to a directed edge and includes:
             - Source node features (e.g., x1, y1, vx1, vy1, q1, m1.)
             - Target node features (e.g., x2, y2, vx2, vy2, q2, m2.)
-            - Message vector components (m0, m1, ..., m{msg_dim-1})
+            - Message vector components (msg0, msg1, ..., m{msg_dim-1})
             - Relative displacement components dx, dy (and dz if dim == 3)
             - Distance r between nodes
     """
@@ -69,7 +69,7 @@ def measure_latent(model, loader, device, dim, msg_dim):
     # Target node feature names (e.g., x2, y2, vx2, vy2, q2)
     for name in feature_names:
         cols.append(f"{name}2")
-    # Message vector component names (m0, m1, ...)
+    # Message vector component names (msg0, msg1, ...)
     for i in range(msg_dim):
         cols.append(f"msg{i}")
 
