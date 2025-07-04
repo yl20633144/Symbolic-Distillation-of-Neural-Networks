@@ -69,19 +69,28 @@ All Python scripts are located in **`/src`**:
 All Python notebooks are placed inside **`/src`**:
 
 - **`spring.ipynb`**  
-  Simulates the mass–spring system and train the four GNN variants. Performs linear regression on the top‐variance message channels to Hooke’s law \(F = k(r - r_0)\) and then uses PySR to extract the closed‐form expression.
+  Simulates the mass–spring system and trains the four GNN variants. Performs linear regression on the top-variance message channels against Hooke’s law \(F = k(r - r_0)\), uses PySR to extract the closed-form expression, and implements **Extension II** (channel-wise specialization).
 
 - **`r2.ipynb`**  
-  Implements the inverse‐square gravitational system (\(F = G\,m_i m_j / r^2\)). The rest working flow is the same as **`spring.ipynb`**.
+  Implements the inverse-square gravitational system (\(F = G\,m_i m_j / r^2\)). Follows the same workflow as **`spring.ipynb`** and includes **Extension II**.
 
-- **`coulomb.ipynb`**  
-  Studies the Coulomb interaction (\(F = q_i q_j / r^2\)). The rest working flow is the same as **`spring.ipynb`**.
+- **`charge.ipynb`**  
+  Studies the Coulomb interaction (\(F = q_i q_j / r^2\)). Follows the same workflow as **`spring.ipynb`**.
 
 - **`inverse_distance.ipynb`**  
-  Covers the “toy” inverse‐distance system (\(F = k / r\)). The rest working flow is the same as **`spring.ipynb`**.
+  Covers the “toy” inverse-distance system (\(F = k / r\)). Follows the same workflow as **`spring.ipynb`** and implements both **Extension I** (acceleration vs. force encoding) and **Extension II** (channel-wise specialization).
 
 ### Model weights  
 The **`/model_weights`** folder contains the learned parameters for all sixteen GNN models (4 physical systems × 4 variant types).
+
+### Symbolic regression results
+All symbolic regression results, including both the **core systems** and the **extension experiments**, can be found in the `src/outputs` directory.
+
+For each model, the outputs include:
+
+- `hall_of_fame.csv`: A table containing the top symbolic expressions discovered by the regression algorithm, along with their corresponding scores (e.g., accuracy, complexity, loss).
+- `checkpoint.pkl`: A serialized PySR run containing the symbolic model’s internal state, including optimizer history.
+- `hall_of_fame.csv.bak`: A backup of the results file.
 
 
 ## Report and summary
@@ -106,6 +115,13 @@ model_l1.load_state_dict(state_dict)
 
 model_l1.eval()
 ```
+### Auto-Generated Documentation
+
+The full API documentation is automatically generated using [Sphinx](https://www.sphinx-doc.org/) and [AutoAPI](https://sphinx-autoapi.readthedocs.io/). It includes detailed descriptions of all Python modules and functions under the `src/` directory.
+
+To view the documentation locally, open the `index.html` file located in the `docs/build/html/` directory with any web browser:
+
+
 
 
 ## AI generation tools:

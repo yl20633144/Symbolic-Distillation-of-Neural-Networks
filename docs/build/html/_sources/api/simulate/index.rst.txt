@@ -1,0 +1,73 @@
+simulate
+========
+
+.. py:module:: simulate
+
+
+
+
+
+
+
+
+Module Contents
+---------------
+
+.. py:data:: s_
+
+.. py:data:: tqdm
+
+.. py:function:: make_transparent_color(ntimes, fraction)
+
+.. py:function:: get_potential(sim, sim_obj)
+
+.. py:class:: SimulationDataset(sim='r2', n=5, dim=2, dt=0.01, nt=100, extra_potential=None, **kwargs)
+
+   Bases: :py:obj:`object`
+
+
+   Docstring for SimulationDataset.
+
+
+   .. py:attribute:: dt
+      :value: 0.01
+
+
+
+   .. py:attribute:: nt
+      :value: 100
+
+
+
+   .. py:attribute:: data
+      :value: None
+
+
+
+   .. py:attribute:: times
+      :value: None
+
+
+
+   .. py:attribute:: G
+      :value: 1
+
+
+
+   .. py:attribute:: extra_potential
+      :value: None
+
+
+
+   .. py:attribute:: pairwise
+
+
+   .. py:method:: simulate(ns, key=0)
+
+
+   .. py:method:: get_acceleration()
+
+
+   .. py:method:: plot(i, animate=False, plot_size=True, s_size=1)
+
+

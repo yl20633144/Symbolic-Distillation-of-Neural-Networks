@@ -18,8 +18,8 @@ def measure_latent(model, loader, device, dim, msg_dim):
 
     Returns:
         A pandas.DataFrame where each row corresponds to a directed edge and includes:
-            - Source node features (e.g., x1, y1, vx1, vy1, q1, etc.)
-            - Target node features (e.g., x2, y2, vx2, vy2, q2, etc.)
+            - Source node features (e.g., x1, y1, vx1, vy1, q1, m1.)
+            - Target node features (e.g., x2, y2, vx2, vy2, q2, m2.)
             - Message vector components (m0, m1, ..., m{msg_dim-1})
             - Relative displacement components dx, dy (and dz if dim == 3)
             - Distance r between nodes
@@ -93,7 +93,7 @@ def fit_multioutput_force(latent_df, dim):
     Fit a multi-output linear model from true force components to the top-D message channels.
 
     Parameters:
-        latent_df: pd.DataFrame containing columns 'fx_true','fy_true' and 'm0'...'mN'
+        latent_df: pd.DataFrame containing columns 'fx_true','fy_true' and 'msg0'...'msgN'
         dim: int, simulation dimensionality (e.g. 2 for 2D, 3 for 3D)
 
     Returns:

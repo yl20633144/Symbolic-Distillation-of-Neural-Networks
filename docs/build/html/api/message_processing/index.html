@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>message_processing &#8212; Symbolic Distillation 1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <script src="../../_static/documentation_options.js?v=29a6c3e3"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="simulate" href="../simulate/index.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-message_processing">
+<span id="message-processing"></span><h1>message_processing<a class="headerlink" href="#module-message_processing" title="Link to this heading">¶</a></h1>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="message_processing.measure_latent">
+<span class="sig-prename descclassname"><span class="pre">message_processing.</span></span><span class="sig-name descname"><span class="pre">measure_latent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg_dim</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#message_processing.measure_latent" title="Link to this definition">¶</a></dt>
+<dd><p>Measure the model’s latent message representations from a DataLoader.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> – A trained graph neural network model that has a .msg_fnc method.</p></li>
+<li><p><strong>loader</strong> – A torch_geometric DataLoader (e.g., trainloader or testloader).</p></li>
+<li><p><strong>device</strong> – The device on which the model and data should be placed (‘cuda’ or ‘cpu’).</p></li>
+<li><p><strong>dim</strong> – Spatial dimensionality of the system (e.g., 2 for 2D, 3 for 3D).</p></li>
+<li><p><strong>n_f</strong> – Feature dimension per node (e.g., position, velocity, mass/charge, etc.).</p></li>
+<li><p><strong>msg_dim</strong> – Dimension of the message vector produced by the model.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>Source node features (e.g., x1, y1, vx1, vy1, q1, m1.)</p></li>
+<li><p>Target node features (e.g., x2, y2, vx2, vy2, q2, m2.)</p></li>
+<li><p>Message vector components (m0, m1, …, m{msg_dim-1})</p></li>
+<li><p>Relative displacement components dx, dy (and dz if dim == 3)</p></li>
+<li><p>Distance r between nodes</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A pandas.DataFrame where each row corresponds to a directed edge and includes</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="message_processing.fit_multioutput_force">
+<span class="sig-prename descclassname"><span class="pre">message_processing.</span></span><span class="sig-name descname"><span class="pre">fit_multioutput_force</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">latent_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#message_processing.fit_multioutput_force" title="Link to this definition">¶</a></dt>
+<dd><p>Fit a multi-output linear model from true force components to the top-D message channels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>latent_df</strong> – pd.DataFrame containing columns ‘fx_true’,’fy_true’ and ‘msg0’…’msgN’</p></li>
+<li><p><strong>dim</strong> – int, simulation dimensionality (e.g. 2 for 2D, 3 for 3D)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>trained LinearRegression instance
+top_channels: list of selected message channel names</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>lr</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="message_processing.measure_variational_latent">
+<span class="sig-prename descclassname"><span class="pre">message_processing.</span></span><span class="sig-name descname"><span class="pre">measure_variational_latent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg_dim</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#message_processing.measure_variational_latent" title="Link to this definition">¶</a></dt>
+<dd><p>Extracts (x1, x2, mu, logvar, dx, dy, r) for every directed edge.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="message_processing.fit_each_channel_by_force_dim">
+<span class="sig-prename descclassname"><span class="pre">message_processing.</span></span><span class="sig-name descname"><span class="pre">fit_each_channel_by_force_dim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">latent_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#message_processing.fit_each_channel_by_force_dim" title="Link to this definition">¶</a></dt>
+<dd><p>For the top-D message channels, perform univariate linear regression using fx_true and fy_true.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>latent_df</strong> (<em>pd.DataFrame</em>) – Must contain columns ‘fx_true’, ‘fy_true’, and ‘msg0’, ‘msg1’, …</p></li>
+<li><p><strong>dim</strong> (<em>int</em>) – Number of channels to select (typically equal to the spatial dimensionality).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p>Names of the selected dim message channels.
+models (dict):</p>
+<blockquote>
+<div><p>models[ch][‘fx’] = LinearRegression model for fx_true.
+models[ch][‘fy’] = LinearRegression model for fy_true.</p>
+</div></blockquote>
+<dl class="simple">
+<dt>r2_scores (dict):</dt><dd><p>r2_scores[ch][‘fx’] = R² score for the regression using fx_true.
+r2_scores[ch][‘fy’] = R² score for the regression using fy_true.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>top_channels (list[str])</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">Symbolic Distillation</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../models/index.html">models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../simulate/index.html">simulate</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">message_processing</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">API Reference</a><ul>
+      <li>Previous: <a href="../simulate/index.html" title="previous chapter">simulate</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, Yihao Liu.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../../_sources/api/message_processing/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,32 @@
+[project]
+name = "DIS data analysis Project"
+version = "0.1.0"
+description = "Symbolic Distillation of Deep Learning Models"
+authors = [{name = "Yihao Liu"}]
+readme = "README.md"
+requires-python = ">=3.12"
+
+[project.dependencies]
+numpy = ">=1.26.4"
+scipy = ">=1.15.2"
+pandas = ">=2.2.3"
+scikit-learn = ">=1.6.1"
+matplotlib = ">=3.10.0"
+jax = ">=0.4.35"
+jaxlib = ">=0.4.35"
+torch = ">=2.5.1"
+torch-geometric = ">=2.6.1"
+celluloid = ">=0.2.0"
+pysr = ">=1.5.6"
+sympy = ">=1.13.3"
+
+[project.optional-dependencies]
+docs = [
+    "sphinx>=8.2.3",
+    "sphinx-autoapi>=3.6.0",
+    "sphinx-rtd-theme>=3.0.2"
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"

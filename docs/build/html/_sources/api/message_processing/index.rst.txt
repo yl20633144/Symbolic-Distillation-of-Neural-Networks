@@ -1,0 +1,66 @@
+message_processing
+==================
+
+.. py:module:: message_processing
+
+
+
+
+Module Contents
+---------------
+
+.. py:function:: measure_latent(model, loader, device, dim, msg_dim)
+
+   Measure the model's latent message representations from a DataLoader.
+
+   :param model: A trained graph neural network model that has a .msg_fnc method.
+   :param loader: A torch_geometric DataLoader (e.g., trainloader or testloader).
+   :param device: The device on which the model and data should be placed ('cuda' or 'cpu').
+   :param dim: Spatial dimensionality of the system (e.g., 2 for 2D, 3 for 3D).
+   :param n_f: Feature dimension per node (e.g., position, velocity, mass/charge, etc.).
+   :param msg_dim: Dimension of the message vector produced by the model.
+
+   :returns:     - Source node features (e.g., x1, y1, vx1, vy1, q1, m1.)
+                 - Target node features (e.g., x2, y2, vx2, vy2, q2, m2.)
+                 - Message vector components (m0, m1, ..., m{msg_dim-1})
+                 - Relative displacement components dx, dy (and dz if dim == 3)
+                 - Distance r between nodes
+   :rtype: A pandas.DataFrame where each row corresponds to a directed edge and includes
+
+
+.. py:function:: fit_multioutput_force(latent_df, dim)
+
+   Fit a multi-output linear model from true force components to the top-D message channels.
+
+   :param latent_df: pd.DataFrame containing columns 'fx_true','fy_true' and 'msg0'...'msgN'
+   :param dim: int, simulation dimensionality (e.g. 2 for 2D, 3 for 3D)
+
+   :returns: trained LinearRegression instance
+             top_channels: list of selected message channel names
+   :rtype: lr
+
+
+.. py:function:: measure_variational_latent(model, loader, device, dim, msg_dim)
+
+   Extracts (x1, x2, mu, logvar, dx, dy, r) for every directed edge.
+
+
+.. py:function:: fit_each_channel_by_force_dim(latent_df, dim)
+
+   For the top-D message channels, perform univariate linear regression using fx_true and fy_true.
+
+   :param latent_df: Must contain columns 'fx_true', 'fy_true', and 'msg0', 'msg1', ...
+   :type latent_df: pd.DataFrame
+   :param dim: Number of channels to select (typically equal to the spatial dimensionality).
+   :type dim: int
+
+   :returns:     Names of the selected dim message channels.
+             models (dict):
+                 models[ch]['fx'] = LinearRegression model for fx_true.
+                 models[ch]['fy'] = LinearRegression model for fy_true.
+             r2_scores (dict):
+                 r2_scores[ch]['fx'] = R² score for the regression using fx_true.
+                 r2_scores[ch]['fy'] = R² score for the regression using fy_true.
+   :rtype: top_channels (list[str])
+
+

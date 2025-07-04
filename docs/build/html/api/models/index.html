@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>models &#8212; Symbolic Distillation 1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <script src="../../_static/documentation_options.js?v=29a6c3e3"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="simulate" href="../simulate/index.html" />
+    <link rel="prev" title="API Reference" href="../index.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-models">
+<span id="models"></span><h1>models<a class="headerlink" href="#module-models" title="Link to this heading">¶</a></h1>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="models.get_edge_index">
+<span class="sig-prename descclassname"><span class="pre">models.</span></span><span class="sig-name descname"><span class="pre">get_edge_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sim</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.get_edge_index" title="Link to this definition">¶</a></dt>
+<dd><p>Constructs the edge index for a graph with n nodes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n</strong> (<em>-</em>) – number of nodes.</p></li>
+<li><p><strong>sim</strong> (<em>-</em>) – simulation type. If sim is ‘string’ or ‘string_ball’, the nodes are
+assumed to be connected in a chain (only adjacent nodes are connected).
+Otherwise, a complete graph (without self-loops) is created.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a torch.tensor of shape [2, num_edges] representing the connectivity.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p>edge_index</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.GeneralGN">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.</span></span><span class="sig-name descname"><span class="pre">GeneralGN</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hidden</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">300</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aggr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'add'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.GeneralGN" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch_geometric.nn.MessagePassing</span></code></p>
+<p>Graph Network (single message passing step).</p>
+<p>Performs one round of message passing: computes edge messages, aggregates them,
+and updates node features.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n_f</strong> (<em>int</em>) – Input node feature dimension.</p></li>
+<li><p><strong>msg_dim</strong> (<em>int</em>) – Edge message dimension (output of edge_model).</p></li>
+<li><p><strong>ndim</strong> (<em>int</em>) – Output node feature dimension after update.</p></li>
+<li><p><strong>hidden</strong> (<em>int</em>) – Hidden layer dimension for MLPs. Default is 300.</p></li>
+<li><p><strong>aggr</strong> (<em>str</em>) – Aggregation method: ‘add’ in this project.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.GeneralGN.edge_model">
+<span class="sig-name descname"><span class="pre">edge_model</span></span><a class="headerlink" href="#models.GeneralGN.edge_model" title="Link to this definition">¶</a></dt>
+<dd><p>Neural network mapping [2*n_f] -&gt; msg_dim for each edge.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Sequential</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.GeneralGN.node_model">
+<span class="sig-name descname"><span class="pre">node_model</span></span><a class="headerlink" href="#models.GeneralGN.node_model" title="Link to this definition">¶</a></dt>
+<dd><p>Neural network mapping [n_f + msg_dim] -&gt; ndim for each node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Sequential</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">edge_model</span></span><a class="headerlink" href="#id0" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">node_model</span></span><a class="headerlink" href="#id1" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="models.GeneralGN.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.GeneralGN.forward" title="Link to this definition">¶</a></dt>
+<dd><p>Computes a single message passing step.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>Tensor</em>) – Node feature matrix of shape [N, n_f].</p></li>
+<li><p><strong>edge_index</strong> (<em>LongTensor</em>) – Edge index tensor of shape [2, E].</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Updated node features of shape [N, ndim].</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>out (Tensor)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="models.GeneralGN.message">
+<span class="sig-name descname"><span class="pre">message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_j</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.GeneralGN.message" title="Link to this definition">¶</a></dt>
+<dd><p>Compute messages for each directed edge.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x_i</strong> (<em>Tensor</em>) – Node features for target nodes, shape [E, n_f].</p></li>
+<li><p><strong>x_j</strong> (<em>Tensor</em>) – Node features for source nodes, shape [E, n_f].</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Message vectors for each edge, shape [E, msg_dim].</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>msgs (Tensor)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="models.GeneralGN.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aggr_out</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.GeneralGN.update" title="Link to this definition">¶</a></dt>
+<dd><p>Update node features after aggregation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>aggr_out</strong> (<em>Tensor</em>) – Aggregated messages for each node, shape [N, msg_dim].</p></li>
+<li><p><strong>x</strong> (<em>Tensor</em>) – Original node features, shape [N, n_f].</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Updated node features, shape [N, ndim].</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>new_feats (Tensor)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.NbodyGNN">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.</span></span><span class="sig-name descname"><span class="pre">NbodyGNN</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aggr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'add'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hidden</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">300</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l1_reg_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.NbodyGNN" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.GeneralGN" title="models.GeneralGN"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GeneralGN</span></code></a></p>
+<p>A specialized GNN for N-body system acceleration prediction.
+Inherits from GeneralGNN and integrates edge_index and loss computation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n_f</strong> (<em>int</em>) – Input node feature dimension (e.g., position, velocity, mass).</p></li>
+<li><p><strong>msg_dim</strong> (<em>int</em>) – Edge message dimension.</p></li>
+<li><p><strong>ndim</strong> (<em>int</em>) – Output node feature dimension (acceleration dimension).</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Time step size (not used directly, reserved for multi-step integration).</p></li>
+<li><p><strong>edge_index</strong> (<em>LongTensor</em>) – Edge index tensor of shape [2, E].</p></li>
+<li><p><strong>aggr</strong> (<em>str</em>) – Aggregation method: ‘add’, ‘mean’, or ‘max’. Default is ‘add’.</p></li>
+<li><p><strong>hidden</strong> (<em>int</em>) – Hidden layer dimension for MLPs. Default is 300.</p></li>
+<li><p><strong>nt</strong> (<em>int</em>) – Number of message passing iterations. Typically 1 for fully connected N-body.</p></li>
+<li><p><strong>l1_reg_weight</strong> (<em>float</em>) – L1 regularization weight for edge messages. Default is 0.0 (no L1).</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.NbodyGNN.nt">
+<span class="sig-name descname"><span class="pre">nt</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#models.NbodyGNN.nt" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.NbodyGNN.edge_index">
+<span class="sig-name descname"><span class="pre">edge_index</span></span><a class="headerlink" href="#models.NbodyGNN.edge_index" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.NbodyGNN.ndim">
+<span class="sig-name descname"><span class="pre">ndim</span></span><a class="headerlink" href="#models.NbodyGNN.ndim" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.NbodyGNN.l1_reg_weight">
+<span class="sig-name descname"><span class="pre">l1_reg_weight</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.0</span></em><a class="headerlink" href="#models.NbodyGNN.l1_reg_weight" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="models.NbodyGNN.predict_acceleration">
+<span class="sig-name descname"><span class="pre">predict_acceleration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.NbodyGNN.predict_acceleration" title="Link to this definition">¶</a></dt>
+<dd><p>Predict node accelerations via message passing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Data</em>) – PyG Data/Batch object containing:
+- data.x: [N, n_f], node features.
+- data.edge_index: [2, E], edge index.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Predicted accelerations, shape [N, ndim].</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="models.NbodyGNN.loss">
+<span class="sig-name descname"><span class="pre">loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.NbodyGNN.loss" title="Link to this definition">¶</a></dt>
+<dd><p>Compute loss: MAE on acceleration + optional L1 regularization on edge messages.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Data</em>) – PyG Data/Batch object containing:
+- data.x: [N, n_f], node features.
+- data.edge_index: [2, E], edge index.
+- data.y: [N, ndim], true accelerations.
+- data.num_graphs: Number of graphs in the batch.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Scalar loss, equal to (MAE per graph + L1 regularization).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>loss_value (Tensor)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.VariationGN">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.</span></span><span class="sig-name descname"><span class="pre">VariationGN</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hidden</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">300</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aggr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'add'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.VariationGN" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">torch_geometric.nn.MessagePassing</span></code></p>
+<p>A variational graph network layer with KL divergence regularization on the edge messages.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.VariationGN.edge_encoder">
+<span class="sig-name descname"><span class="pre">edge_encoder</span></span><a class="headerlink" href="#models.VariationGN.edge_encoder" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.VariationGN.node_decoder">
+<span class="sig-name descname"><span class="pre">node_decoder</span></span><a class="headerlink" href="#models.VariationGN.node_decoder" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="models.VariationGN.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.VariationGN.forward" title="Link to this definition">¶</a></dt>
+<dd><p>Perform one message-passing step.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – [N, n_f] node feature matrix</p></li>
+<li><p><strong>edge_index</strong> – [2, E] edge indices</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>[N, ndim] updated node features</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="models.VariationGN.message">
+<span class="sig-name descname"><span class="pre">message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_j</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.VariationGN.message" title="Link to this definition">¶</a></dt>
+<dd><p>Compute variational messages for each directed edge.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x_i</strong> – [E, n_f] features of target nodes</p></li>
+<li><p><strong>x_j</strong> – [E, n_f] features of source nodes</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>[E, msg_dim] sampled message vectors</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>m</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="models.VariationGN.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aggr_out</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.VariationGN.update" title="Link to this definition">¶</a></dt>
+<dd><p>Update node features by combining aggregated messages and input features.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>aggr_out</strong> – [N, msg_dim] aggregated messages per node</p></li>
+<li><p><strong>x</strong> – [N, n_f] original node features</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>[N, ndim] updated node features</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.VariationNbody">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.</span></span><span class="sig-name descname"><span class="pre">VariationNbody</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hidden</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">300</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.VariationNbody" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.VariationGN" title="models.VariationGN"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VariationGN</span></code></a></p>
+<p>A full GNN model for N-body acceleration prediction with variational edge messages.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.VariationNbody.edge_index">
+<span class="sig-name descname"><span class="pre">edge_index</span></span><a class="headerlink" href="#models.VariationNbody.edge_index" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.VariationNbody.beta">
+<span class="sig-name descname"><span class="pre">beta</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1.0</span></em><a class="headerlink" href="#models.VariationNbody.beta" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="models.VariationNbody.predict_acceleration">
+<span class="sig-name descname"><span class="pre">predict_acceleration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.VariationNbody.predict_acceleration" title="Link to this definition">¶</a></dt>
+<dd><p>Run message passing to predict accelerations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data.x</strong> – [N, n_f] node features</p></li>
+<li><p><strong>data.edge_index</strong> – [2, E] edge indices</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>[N, ndim] predicted accelerations</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="models.VariationNbody.loss">
+<span class="sig-name descname"><span class="pre">loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.VariationNbody.loss" title="Link to this definition">¶</a></dt>
+<dd><p>Compute VAE-style loss = data term + beta * KL term.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data.y</strong> – [N, ndim] ground-truth accelerations</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>scalar tensor of total loss (mean reduction)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">Symbolic Distillation</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../simulate/index.html">simulate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../message_processing/index.html">message_processing</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">API Reference</a><ul>
+      <li>Previous: <a href="../index.html" title="previous chapter">API Reference</a></li>
+      <li>Next: <a href="../simulate/index.html" title="next chapter">simulate</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, Yihao Liu.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../../_sources/api/models/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,266 @@
+models
+======
+
+.. py:module:: models
+
+
+
+
+
+
+Module Contents
+---------------
+
+.. py:function:: get_edge_index(n, sim)
+
+   Constructs the edge index for a graph with n nodes.
+
+   :param - n: number of nodes.
+   :param - sim: simulation type. If sim is 'string' or 'string_ball', the nodes are
+                 assumed to be connected in a chain (only adjacent nodes are connected).
+                 Otherwise, a complete graph (without self-loops) is created.
+
+   :returns: a torch.tensor of shape [2, num_edges] representing the connectivity.
+   :rtype: - edge_index
+
+
+.. py:class:: GeneralGN(n_f, msg_dim, ndim, hidden=300, aggr='add')
+
+   Bases: :py:obj:`torch_geometric.nn.MessagePassing`
+
+
+   Graph Network (single message passing step).
+
+   Performs one round of message passing: computes edge messages, aggregates them,
+   and updates node features.
+
+   :param n_f: Input node feature dimension.
+   :type n_f: int
+   :param msg_dim: Edge message dimension (output of edge_model).
+   :type msg_dim: int
+   :param ndim: Output node feature dimension after update.
+   :type ndim: int
+   :param hidden: Hidden layer dimension for MLPs. Default is 300.
+   :type hidden: int
+   :param aggr: Aggregation method: 'add' in this project.
+   :type aggr: str
+
+   .. attribute:: edge_model
+
+      Neural network mapping [2*n_f] -> msg_dim for each edge.
+
+      :type: Sequential
+
+   .. attribute:: node_model
+
+      Neural network mapping [n_f + msg_dim] -> ndim for each node.
+
+      :type: Sequential
+
+
+   .. py:attribute:: edge_model
+
+
+   .. py:attribute:: node_model
+
+
+   .. py:method:: forward(x, edge_index)
+
+      Computes a single message passing step.
+
+      :param x: Node feature matrix of shape [N, n_f].
+      :type x: Tensor
+      :param edge_index: Edge index tensor of shape [2, E].
+      :type edge_index: LongTensor
+
+      :returns: Updated node features of shape [N, ndim].
+      :rtype: out (Tensor)
+
+
+
+   .. py:method:: message(x_i, x_j)
+
+      Compute messages for each directed edge.
+
+      :param x_i: Node features for target nodes, shape [E, n_f].
+      :type x_i: Tensor
+      :param x_j: Node features for source nodes, shape [E, n_f].
+      :type x_j: Tensor
+
+      :returns: Message vectors for each edge, shape [E, msg_dim].
+      :rtype: msgs (Tensor)
+
+
+
+   .. py:method:: update(aggr_out, x)
+
+      Update node features after aggregation.
+
+      :param aggr_out: Aggregated messages for each node, shape [N, msg_dim].
+      :type aggr_out: Tensor
+      :param x: Original node features, shape [N, n_f].
+      :type x: Tensor
+
+      :returns: Updated node features, shape [N, ndim].
+      :rtype: new_feats (Tensor)
+
+
+
+.. py:class:: NbodyGNN(n_f, msg_dim, ndim, edge_index, aggr='add', hidden=300, nt=1, l1_reg_weight=0.0)
+
+   Bases: :py:obj:`GeneralGN`
+
+
+   A specialized GNN for N-body system acceleration prediction.
+   Inherits from GeneralGNN and integrates edge_index and loss computation.
+
+   :param n_f: Input node feature dimension (e.g., position, velocity, mass).
+   :type n_f: int
+   :param msg_dim: Edge message dimension.
+   :type msg_dim: int
+   :param ndim: Output node feature dimension (acceleration dimension).
+   :type ndim: int
+   :param dt: Time step size (not used directly, reserved for multi-step integration).
+   :type dt: float
+   :param edge_index: Edge index tensor of shape [2, E].
+   :type edge_index: LongTensor
+   :param aggr: Aggregation method: 'add', 'mean', or 'max'. Default is 'add'.
+   :type aggr: str
+   :param hidden: Hidden layer dimension for MLPs. Default is 300.
+   :type hidden: int
+   :param nt: Number of message passing iterations. Typically 1 for fully connected N-body.
+   :type nt: int
+   :param l1_reg_weight: L1 regularization weight for edge messages. Default is 0.0 (no L1).
+   :type l1_reg_weight: float
+
+
+   .. py:attribute:: nt
+      :value: 1
+
+
+
+   .. py:attribute:: edge_index
+
+
+   .. py:attribute:: ndim
+
+
+   .. py:attribute:: l1_reg_weight
+      :value: 0.0
+
+
+
+   .. py:method:: predict_acceleration(data)
+
+      Predict node accelerations via message passing.
+
+      :param data: PyG Data/Batch object containing:
+                   - data.x: [N, n_f], node features.
+                   - data.edge_index: [2, E], edge index.
+      :type data: Data
+
+      :returns: Predicted accelerations, shape [N, ndim].
+
+
+
+   .. py:method:: loss(data)
+
+      Compute loss: MAE on acceleration + optional L1 regularization on edge messages.
+
+      :param data: PyG Data/Batch object containing:
+                   - data.x: [N, n_f], node features.
+                   - data.edge_index: [2, E], edge index.
+                   - data.y: [N, ndim], true accelerations.
+                   - data.num_graphs: Number of graphs in the batch.
+      :type data: Data
+
+      :returns: Scalar loss, equal to (MAE per graph + L1 regularization).
+      :rtype: loss_value (Tensor)
+
+
+
+.. py:class:: VariationGN(n_f, msg_dim, ndim, hidden=300, aggr='add')
+
+   Bases: :py:obj:`torch_geometric.nn.MessagePassing`
+
+
+   A variational graph network layer with KL divergence regularization on the edge messages.
+
+
+   .. py:attribute:: edge_encoder
+
+
+   .. py:attribute:: node_decoder
+
+
+   .. py:method:: forward(x, edge_index)
+
+      Perform one message-passing step.
+
+      :param x: [N, n_f] node feature matrix
+      :param edge_index: [2, E] edge indices
+
+      :returns: [N, ndim] updated node features
+
+
+
+   .. py:method:: message(x_i, x_j)
+
+      Compute variational messages for each directed edge.
+
+      :param x_i: [E, n_f] features of target nodes
+      :param x_j: [E, n_f] features of source nodes
+
+      :returns: [E, msg_dim] sampled message vectors
+      :rtype: m
+
+
+
+   .. py:method:: update(aggr_out, x)
+
+      Update node features by combining aggregated messages and input features.
+
+      :param aggr_out: [N, msg_dim] aggregated messages per node
+      :param x: [N, n_f] original node features
+
+      :returns: [N, ndim] updated node features
+
+
+
+.. py:class:: VariationNbody(n_f, msg_dim, ndim, edge_index, hidden=300, beta=1.0)
+
+   Bases: :py:obj:`VariationGN`
+
+
+   A full GNN model for N-body acceleration prediction with variational edge messages.
+
+
+   .. py:attribute:: edge_index
+
+
+   .. py:attribute:: beta
+      :value: 1.0
+
+
+
+   .. py:method:: predict_acceleration(data)
+
+      Run message passing to predict accelerations.
+
+      :param data.x: [N, n_f] node features
+      :param data.edge_index: [2, E] edge indices
+
+      :returns: [N, ndim] predicted accelerations
+
+
+
+   .. py:method:: loss(data)
+
+      Compute VAE-style loss = data term + beta * KL term.
+
+      :param data.y: [N, ndim] ground-truth accelerations
+
+      :returns: scalar tensor of total loss (mean reduction)
+
+
+
