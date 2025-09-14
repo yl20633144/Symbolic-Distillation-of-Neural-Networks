@@ -3,7 +3,13 @@
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 ## Description
-This project is the submission of the Data Analysis Project as part of the MPhil in Data Intensive Science at the University of Cambridge. The primary objective of this project is to reproduce the results presented in [Discovering Symbolic Models from Deep Learning with Inductive Biases](https://arxiv.org/abs/2006.11287), and its corresponding implementation [(GitHub repository)](https://github.com/MilesCranmer/symbolic_deep_learning). 
+This project is the submission of the Data Analysis Project as part of the MPhil in Data Intensive Science (Dissertation) at the University of Cambridge. The primary objective of this project has two parts:
+
+1. To reproduce the results presented in [Discovering Symbolic Models from Deep Learning with Inductive Biases](https://arxiv.org/abs/2006.11287), and its corresponding implementation [(GitHub repository)](https://github.com/MilesCranmer/symbolic_deep_learning). This mainly involves recovering analytical force laws from learned message representations by combining Graph Neural Networks (GNNs) with symbolic regression.
+
+2. Extension — We conduct an in-depth study of how message channels encode physical information. In particular, we investigate whether the edge-message space yields representations that align with true physical laws, and we illustrate that the underlying encoding mechanism is not fully transparent.
+
+The project provides insights into the interpretability of deep neural networks, especially in scientific applications.
 
 
 ## Data
